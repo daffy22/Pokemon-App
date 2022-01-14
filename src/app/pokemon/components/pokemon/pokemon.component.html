@@ -1,0 +1,96 @@
+
+<mat-icon class="cp"
+          aria-hidden="false"
+          aria-label="Arrow backi icon"
+          matTooltip="Go back"
+          (click)="goBack()">
+          arrow_back
+</mat-icon>
+
+<mat-divider></mat-divider>
+<br>
+
+<ng-template #spinner>
+  <div style="position: relative; height: 410px;">
+    <mat-spinner style="margin: 0 auto; top: 50%;"></mat-spinner>
+  </div>
+</ng-template>
+
+<ng-container *ngIf="pokemon; else spinner">
+
+  <mat-grid-list cols="2" rowHeight="2:1">
+
+    <mat-grid-tile class="outline">
+
+      <!-- Grid with differents pokemon images -->
+      <div fxLayout="column" fxLayoutGap="15px">
+
+        <div fxLayout="row" fxLayoutGap="120px">
+
+          <div *ngIf="pokemon.sprites.front_female">
+            <img [src]="pokemon.sprites.front_female" alt="Front female">
+            <h3>Front female</h3>
+          </div>
+
+          <div>
+            <img [src]="pokemon.sprites.front_default" alt="Front default">
+            <h3>Front default</h3>
+          </div>
+
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="120px">
+
+          <div *ngIf="pokemon.sprites.front_shiny_female">
+            <img [src]="pokemon.sprites.front_shiny_female" alt="Front shiny female">
+            <h3>Shiny female</h3>
+          </div>
+
+          <div>
+            <img [src]="pokemon.sprites.front_shiny" alt="Front shiny">
+            <h3>Shiny male</h3>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </mat-grid-tile>
+
+    <div style="text-align: left;">
+
+      <mat-grid-tile class="outline">
+
+        <mat-list style="width: 100%;">
+
+          <mat-list-item role="listitem">
+            Name: {{ pokemon.name | titlecase }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Type: {{ pokemon.types[0].type.name | titlecase }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Weight: {{ pokemon.weight | number }} hg
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            <mat-icon class="add__favorite"
+                     (click)="addFavorite()">
+            favorite_border
+          </mat-icon>
+
+          </mat-list-item>
+
+        </mat-list>
+
+
+      </mat-grid-tile>
+
+    </div>
+
+  </mat-grid-list>
+
+</ng-container>

@@ -1,0 +1,37 @@
+
+<mat-icon class="cp"
+          aria-hidden="false"
+          aria-label="Arrow backi icon"
+          matTooltip="Go back"
+          (click)="goBack()">
+          arrow_back
+</mat-icon>
+
+<mat-divider></mat-divider>
+
+<div fxLayout="row wrap"
+     fxLayout.xs="column"
+     fxLayoutAlign="left"
+     fxLayoutGap="20px">
+
+  <ng-container *ngIf="myFavorites.length !== 0; else divNothing">
+    <div fxFlex="20"
+    fxFlex.lg="15"
+    fxFlex.sm="30"
+    *ngFor="let favorite of myFavorites">
+
+      <app-pokemon-card [pokemon]="favorite" [favorites]="myFavorites"></app-pokemon-card>
+
+    </div>
+  </ng-container>
+
+</div>
+
+<ng-template #divNothing>
+  <div>
+    <h2>Oops!</h2>
+    <p>
+      You have no favorites. Please review a pokemon and add it to your favorites list.
+    </p>
+  </div>
+</ng-template>

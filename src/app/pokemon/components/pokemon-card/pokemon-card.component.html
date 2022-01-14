@@ -1,0 +1,29 @@
+
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title>{{ pokemon.name | titlecase }}</mat-card-title>
+    <mat-card-subtitle><strong>Type:</strong> {{ pokemon.types[0].type.name | titlecase }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image [src]="pokemon | image">
+
+  <mat-card-content>
+    <h3>{{ pokemon.name | titlecase }}</h3>
+    <p>
+      <strong>Order: </strong> {{ pokemon.order }}
+      <br>
+      <strong>Base experience:</strong> {{ pokemon.base_experience }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button color="warn" [routerLink]="['/pokemon/view', pokemon.name]">
+      Read more..
+    </button>
+    <button mat-button color="info" (click)="removeFavorite()">
+      Remove
+    </button>
+  </mat-card-actions>
+
+</mat-card>
